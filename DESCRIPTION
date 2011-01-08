@@ -8,4 +8,4 @@ Maintainer: John Myles White <jmw@johnmyleswhite.com>
 Description: Tools for model fitting, model assessment and model simulation for researchers working with behavioral economic models, especially models for intertemporal choice and decision-making under uncertainty.
 License: Artistic-2.0
 LazyLoad: yes
-Depends: rjags
+Depends: rjags, testthat

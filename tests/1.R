@@ -1,15 +1,20 @@
+library('testthat')
 library('BehavioralEconomics')
+
+# Check that functions exist and do something.
 
 choices <- data.frame(X1 = 1, X2 = 2, T1 = 0, T2 = 1, C = 1)
 
-fit.exponential.discounting.model(choices)
+discounting.model.fit(choices, 'exponential')
 
-fit.hyperbolic.discounting.model(choices)
+discounting.model.fit(choices, 'hyperbolic')
 
-fit.quasihyperbolic.discounting.model(choices)
+discounting.model.fit(choices, 'quasihyperbolic')
 
-fit.generalized.hyperbolic.discounting.model(choices)
+discounting.model.fit(choices, 'generalized-hyperbolic')
 
-fit.kable.glimcher.discounting.model(choices)
+discounting.model.fit(choices, 'kable-glimcher')
 
-fit.benhabib.discounting.model(choices)
+discounting.model.fit(choices, 'benhabib')
+
+discounting.model.fit(choices, 'concave-waiting')

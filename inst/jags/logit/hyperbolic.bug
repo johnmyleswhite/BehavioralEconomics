@@ -1,0 +1,16 @@
+model
+{
+	for (i in 1:N)
+	{
+		u2[i] <- pow(X2[i], gamma) / (1 + k * T2[i])
+		u1[i] <- pow(X1[i], gamma) / (1 + k * T1[i])
+
+		logit(p[i]) <- a * (u2[i] - u1[i])
+
+		C[i] ~ dbern(p[i])
+	}
+
+	a ~ dunif(0.1, 9.9)
+	k ~ dunif(0.01, 9.99)
+	gamma ~ dunif(0.01, 0.99)
+}

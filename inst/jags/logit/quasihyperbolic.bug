@@ -1,0 +1,17 @@
+model
+{
+	for (i in 1:N)
+	{
+		u2[i] <- (T2[i] == 0) * pow(X2[i], gamma) + (T2[i] != 0) * pow(X2[i], gamma) * beta * pow(delta, T2[i])
+		u1[i] <- (T1[i] == 0) * pow(X1[i], gamma) + (T1[i] != 0) * pow(X1[i], gamma) * beta * pow(delta, T1[i])
+
+		logit(p[i]) <- a * (u2[i] - u1[i])
+
+		C[i] ~ dbern(p[i])
+	}
+
+	a ~ dunif(0.1, 9.9)
+	beta ~ dunif(0.01, 0.99)
+	delta ~ dunif(0.01, 0.99)
+	gamma ~ dunif(0.01, 0.99)
+}

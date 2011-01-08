@@ -1,5 +1,5 @@
 # Introduction
-The BehavioralEconomics package is a collection of statistical methods that will be useful to researchers in behavioral economics who want to work with econometric models for discrete choice data, particularly involving intertemporal choice data.
+The BehavioralEconomics package is a collection of statistical methods that will be useful to researchers in behavioral economics, particularly if they are modeling intertemporal choice data.
 
 # Current Models
 At present, the package implements six models for intertemporal choice:
@@ -9,7 +9,7 @@ At present, the package implements six models for intertemporal choice:
 * Generalized hyperbolic discounting
 * Kable-Glimcher "as soon as possible" discounting
 * Benhabib fixed cost discounting
-These are fit using JAGS through the rjags package. Priors are used that 
+These are fit using JAGS through the rjags package. Priors are used that as considered "weakly informative".
 
 # Intertemporal Choice Models
 Every intertemporal choice model assumes that your data is in the form of a data frame with five columns:

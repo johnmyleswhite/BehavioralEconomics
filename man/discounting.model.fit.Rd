@@ -1,5 +1,5 @@
-\name{fit.discounting.model}
-\alias{fit.discounting.model}
+\name{discounting.model.fit}
+\alias{discounting.model.fit}
 \title{
 Fit a discounting model.
 }
@@ -7,7 +7,7 @@ Fit a discounting model.
 Fit a discounting model.
 }
 \usage{
-fit.discounting.model(choices, model = "exponential", method = "bayes", n.adapt = 1000, n.iter = 1000)
+discounting.model.fit(choices, model = 'exponential', method = 'bayes', control = list(n.adapt = 1000, n.iter = 1000))
 }
 \arguments{
   \item{choices}{
@@ -19,11 +19,8 @@ fit.discounting.model(choices, model = "exponential", method = "bayes", n.adapt 
   \item{method}{
 	bayes
 }
-  \item{n.adapt}{
-	1000
-}
-  \item{n.iter}{
-	1000
+  \item{control}{
+	Contains n.adapt = 1000, n.iter = 1000
 }
 }
 \value{
@@ -32,5 +29,5 @@ fit.discounting.model(choices, model = "exponential", method = "bayes", n.adapt 
 \examples{
 choices <- data.frame(X1 = 1, X2 = 2, T1 = 0, T2 = 1, C = 1)
 
-fit.discounting.model(choices, model = 'exponential', method = "bayes", n.adapt = 1000, n.iter = 1000)
+discounting.model.fit(choices, model = 'exponential', method = 'bayes')
 }
