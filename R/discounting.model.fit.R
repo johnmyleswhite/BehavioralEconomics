@@ -1,4 +1,4 @@
-discounting.model.fit <- function(choices, model = 'exponential', method = 'bayes', control = list(n.adapt = 1000, n.iter = 1000))
+discounting.model.fit <- function(choices, model = 'exponential', method = 'bayes', control = list(n.adapt = 1000, n.iter = 1000, raw.samples = FALSE))
 {
   # method: mle or bayes
   # control: n.adapt, n.iter, etc.
@@ -32,7 +32,8 @@ discounting.model.fit <- function(choices, model = 'exponential', method = 'baye
                                    'T2' = choices$T2,
                                    'C' = choices$C,
                                    'N' = nrow(choices)),
-                       n.adapt = control[['n.adapt']])
+                       n.adapt = control[['n.adapt']],
+                       n.chains = 4)
 
     mcmc.samples <- jags.samples(jags,
                                  variable.names = variable.names,
@@ -45,9 +46,12 @@ discounting.model.fit <- function(choices, model = 'exponential', method = 'baye
       inferred.parameters[[parameter]] <- apply(mcmc.samples[[parameter]], 1, mean)
     }
 
-    inferred.parameters[['coda']] <- coda.samples(jags,
-                                                  variable.names = variable.names,
-                                                  n.iter = control[['n.iter']])
+    if (control[['raw.samples']])
+    {
+      inferred.parameters[['coda']] <- coda.samples(jags,
+                                                    variable.names = variable.names,
+                                                    n.iter = control[['n.iter']])
+    }
 
     return(inferred.parameters)
   }

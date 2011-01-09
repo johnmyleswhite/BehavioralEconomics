@@ -13,6 +13,6 @@ model
 	a ~ dunif(0.1, 9.9)
 	alpha ~ dunif(0.01, 99.99)
 	delta ~ dunif(0.01, 0.99)
-	gamma ~ dunif(0.01, 0.99)
+	gamma ~ dunif(0.01, 1.99)
 	eta ~ dunif(0.01, 0.99)
 }

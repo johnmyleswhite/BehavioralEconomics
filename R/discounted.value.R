@@ -40,7 +40,7 @@ discounted.value <- function(x, t, model, parameters)
   models <- list('exponential' = exponential.model,
                  'hyperbolic' = hyperbolic.model,
                  'quasihyperbolic' = quasihyperbolic.model,
-                 'generalized.hyperbolic' = generalized.hyperbolic.model)
+                 'generalized-hyperbolic' = generalized.hyperbolic.model)
   
   return(do.call(models[[model]], list(x = x, t = t, parameters = parameters)))
 }

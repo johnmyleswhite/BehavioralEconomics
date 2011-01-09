@@ -2,8 +2,8 @@ model
 {
 	for (i in 1:N)
 	{
-		u2[i] <- pow(X2[i], gamma) * pow(- beta / alpha, 1 + alpha * T2[i])
-		u1[i] <- pow(X1[i], gamma) *  pow(- beta / alpha, 1 + alpha * T1[i])
+		u2[i] <- pow(X2[i], gamma) * pow(1 + alpha * T2[i], - beta / alpha)
+		u1[i] <- pow(X1[i], gamma) *  pow(1 + alpha * T1[i], - beta / alpha)
 
 		logit(p[i]) <- a * (u2[i] - u1[i])
 
@@ -13,5 +13,5 @@ model
 	a ~ dunif(0.1, 9.9)
 	alpha ~ dunif(0.01, 99.99)
 	beta ~ dunif(0.01, 99.99)
-	gamma ~ dunif(0.01, 0.99)
+	gamma ~ dunif(0.01, 1.99)
 }
