@@ -2,16 +2,18 @@ model
 {
 	for (i in 1:N)
 	{
-		u2[i] <- pow(X2[i], gamma) * pow(1 + alpha * T2[i], - beta / alpha)
-		u1[i] <- pow(X1[i], gamma) *  pow(1 + alpha * T1[i], - beta / alpha)
+		u2[i] <- pow(X2[i], gamma) * pow(1 + alpha * T2[i], exponent)
+		u1[i] <- pow(X1[i], gamma) *  pow(1 + alpha * T1[i], exponent)
 
 		logit(p[i]) <- a * (u2[i] - u1[i])
 
 		C[i] ~ dbern(p[i])
 	}
 
-	a ~ dunif(0.1, 9.9)
-	alpha ~ dunif(0.01, 99.99)
-	beta ~ dunif(0.01, 99.99)
-	gamma ~ dunif(0.01, 1.99)
+	exponent <- -1 * (beta / alpha)
+
+	a ~ dgamma(0.1, 0.1)
+	alpha ~ dgamma(0.001, 0.001)
+	beta ~ dgamma(0.001, 0.001)
+	gamma ~ dunif(0.001, 0.999)
 }

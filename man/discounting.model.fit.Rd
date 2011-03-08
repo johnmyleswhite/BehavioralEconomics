@@ -7,7 +7,7 @@ Fit a discounting model.
 Fit a discounting model.
 }
 \usage{
-discounting.model.fit(choices, model = 'exponential', method = 'bayes', control = list(n.adapt = 1000, n.iter = 1000, raw.samples = FALSE))
+discounting.model.fit(choices, model = 'exponential', method = 'bayes', control = list(n.adapt = 1000, n.iter = 1000, raw.samples = FALSE, median = FALSE, mode = FALSE, hierarchical = FALSE))
 }
 \arguments{
   \item{choices}{
@@ -20,7 +20,7 @@ discounting.model.fit(choices, model = 'exponential', method = 'bayes', control 
 	bayes
 }
   \item{control}{
-	Contains n.adapt = 1000, n.iter = 1000, raw.false = FALSE
+	Contains n.adapt = 1000, n.iter = 1000, raw.false = FALSE, median = FALSE, mode = FALSE, hierarchical = FALSE
 }
 }
 \value{

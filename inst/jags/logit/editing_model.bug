@@ -2,15 +2,15 @@ model
 {
 	for (i in 1:N)
 	{
-		u2[i] <- pow(X2[i], gamma) - alpha
-		u1[i] <- pow(X1[i], gamma)
-
-		logit(p[i]) <- a * (u2[i] - u1[i])
-
+		du[i] <- pow(X2[i] - X1[i], gamma) - alpha * pow(T2[i] - T1[i], eta)
+		
+		logit(p[i]) <- a * du[i]
+		
 		C[i] ~ dbern(p[i])
 	}
-
+	
 	a ~ dgamma(0.1, 0.1)
 	alpha ~ dgamma(0.001, 0.001)
 	gamma ~ dunif(0.001, 0.999)
+	eta ~ dunif(0.001, 0.999)
 }

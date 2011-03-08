@@ -1,0 +1,35 @@
+model
+{
+	for (i in 1:N)
+	{
+		u2[i] <- theta[Subject[i]] * X2[i] * pow(delta[Subject[i]], T2[i]) + (1 - theta[Subject[i]]) * (pow(X2[i], gamma[Subject[i]]) - pow(tau[i], eta[Subject[i]]))		
+		tau[i] <- T2[i] - T1[i]
+		u1[i] <- theta[Subject[i]] * X1[i] * pow(delta[Subject[i]], T1[i]) + (1 - theta[Subject[i]]) * pow(X1[i], gamma[Subject[i]])
+		logit(p[i]) <- a[Subject[i]] * (u2[i] - u1[i])
+		C[i] ~ dbern(p[i])
+	}
+	
+	for (j in 1:M)
+	{
+		a[j] ~ dgamma(a.shape, a.rate)
+		gamma[j] ~ dgamma(gamma.shape, gamma.rate)
+		theta[j] ~ dbeta(theta.x, theta.y)
+		delta[j] ~ dbeta(delta.x, delta.y)
+		eta[j] ~ dgamma(eta.shape, eta.rate)
+	}
+	
+	a.shape ~ dgamma(0.001, 0.001)
+	a.rate ~ dgamma(0.001, 0.001)
+	
+	gamma.shape ~ dgamma(0.001, 0.001)
+	gamma.rate ~ dgamma(0.001, 0.001)
+	
+	theta.x ~ dgamma(0.001, 0.001)
+	theta.y ~ dgamma(0.001, 0.001)
+	
+	delta.x ~ dgamma(0.001, 0.001)
+	delta.y ~ dgamma(0.001, 0.001)
+	
+	eta.shape ~ dgamma(0.001, 0.001)
+	eta.rate ~ dgamma(0.001, 0.001)
+}

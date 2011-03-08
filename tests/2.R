@@ -18,6 +18,14 @@ expect_that(discounted.value(1, 0, 'generalized-hyperbolic', list('alpha' = 1, '
 expect_that(discounted.value(1, 1, 'generalized-hyperbolic', list('alpha' = 1, 'beta' = 1)), equals(1 / 2))
 expect_that(discounted.value(1, 2, 'generalized-hyperbolic', list('alpha' = 1, 'beta' = 1)), equals(1 / 3))
 
+expect_that(discounted.value(1, 0, 'generalized-hyperbolic', list('alpha' = 1, 'beta' = 2, 'gamma' = 1)), equals(1))
+expect_that(discounted.value(1, 1, 'generalized-hyperbolic', list('alpha' = 1, 'beta' = 2, 'gamma' = 1)), equals(1 / 4))
+expect_that(discounted.value(1, 2, 'generalized-hyperbolic', list('alpha' = 1, 'beta' = 2, 'gamma' = 1)), equals(1 / 9))
+
+expect_that(discounted.value(1, 0, 'generalized-hyperbolic', list('alpha' = 2, 'beta' = 1, 'gamma' = 1)), equals(1))
+expect_that(discounted.value(1, 1, 'generalized-hyperbolic', list('alpha' = 2, 'beta' = 1, 'gamma' = 1)), equals(sqrt(1 / 3)))
+expect_that(discounted.value(1, 2, 'generalized-hyperbolic', list('alpha' = 2, 'beta' = 1, 'gamma' = 1)), equals(sqrt(1 / 5)))
+
 # Basic choice probability tests.
 expect_that(discounting.model.choice.probability(1,
                                                  0,

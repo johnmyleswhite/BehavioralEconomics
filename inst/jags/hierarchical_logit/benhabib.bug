@@ -1,0 +1,28 @@
+model
+{
+	for (i in 1:N)
+	{
+		u2[i] <- pow(X2[i], gamma[Subject[i]]) - alpha[Subject[i]]
+		u1[i] <- pow(X1[i], gamma[Subject[i]])
+
+		logit(p[i]) <- a[Subject[i]] * (u2[i] - u1[i])
+
+		C[i] ~ dbern(p[i])
+	}
+
+	for (j in 1:M)
+	{
+		a[j] ~ dgamma(a.shape, a.rate)
+		gamma[j] ~ dbeta(gamma.x, gamma.y)
+		alpha[j] ~ dgamma(alpha.shape, alpha.rate)
+	}
+
+	a.shape ~ dgamma(0.001, 0.001)
+	a.rate ~ dgamma(0.001, 0.001)
+
+	gamma.x ~ dgamma(0.001, 0.001)
+	gamma.y ~ dgamma(0.001, 0.001)
+
+	alpha.shape ~ dgamma(0.001, 0.001)
+	alpha.rate ~ dgamma(0.001, 0.001)
+}

@@ -10,7 +10,7 @@ model
 		C[i] ~ dbern(p[i])
 	}
 
-	a ~ dunif(0.1, 9.9)
-	delta ~ dunif(0.01, 0.99)
-	gamma ~ dunif(0.01, 1.99)
+	a ~ dgamma(0.1, 0.1)
+	delta ~ dunif(0.001, 0.999)
+	gamma ~ dunif(0.001, 0.999)
 }
